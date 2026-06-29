@@ -85,7 +85,7 @@ export function WhatIsInside() {
                   className="group py-5 md:py-6 border-t border-background/10 first:border-t-0 lg:first:border-t hover:bg-background/5 transition-colors duration-300"
                 >
                   <div className="flex items-start gap-4">
-                    <Icon className="w-6 h-6 md:w-7 md:h-7 text-background/70 group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5" />
+                    <Icon className="w-6 h-6 md:w-7 md:h-7 text-background/70 md:group-hover:scale-110 transition-transform duration-300 shrink-0 mt-0.5" />
                     <div>
                       <h3 className="text-lg md:text-xl font-heading font-bold tracking-tight mb-1">
                         {item.title}
@@ -112,7 +112,7 @@ export function WhatIsInside() {
           {["Zero Sugar", "Plant Based", "No Artificial Colours", "Low Calories"].map((tag) => (
             <div
               key={tag}
-              className="group flex items-center justify-center text-center py-4 md:py-5 px-2 border border-background/10 text-xs md:text-sm font-bold tracking-widest uppercase text-background/70 hover:bg-background/10 hover:text-background hover:-translate-y-0.5 transition-all duration-300 cursor-default leading-tight"
+              className="group flex items-center justify-center text-center py-4 md:py-5 px-2 border border-background/10 text-xs md:text-sm font-bold tracking-widest uppercase text-background/70 md:hover:bg-background/10 md:hover:text-background md:hover:-translate-y-0.5 transition-all duration-300 cursor-default leading-tight"
             >
               {tag}
             </div>

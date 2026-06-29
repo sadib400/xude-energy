@@ -122,7 +122,9 @@ export function Navigation() {
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`md:hidden p-2 -mr-2 transition-colors ${isSticky ? "text-foreground" : "text-white"}`}
+                className={`md:hidden p-2 -mr-2 transition-colors ${
+                  isOpen ? "text-foreground" : isSticky ? "text-foreground" : "text-white"
+                }`}
                 aria-label="Toggle menu"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -142,8 +144,8 @@ export function Navigation() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-background md:hidden"
           >
-            <div className="flex flex-col justify-center h-full px-6 pb-20">
-              <nav className="flex flex-col gap-2">
+            <div className="flex flex-col justify-center items-center h-full px-6 pb-20">
+              <nav className="flex flex-col items-center gap-4 w-full">
                 {[{ name: "Home", id: "hero-section" }, ...navItems].map(
                   (item, i) => (
                     <motion.button
@@ -153,7 +155,7 @@ export function Navigation() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 20 }}
                       transition={{ delay: i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-left text-5xl font-heading font-black tracking-tight py-2 border-b border-black/10 hover:pl-4 transition-all"
+                      className="text-center text-4xl font-heading font-black tracking-tight py-2 border-b border-black/10 md:hover:pl-4 transition-all w-full"
                     >
                       {item.name}
                     </motion.button>

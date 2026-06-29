@@ -59,9 +59,8 @@ function StoryBlock({
       {/* Image with clean frame */}
       <motion.div
         style={{ y }}
-        whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.5 }}
-        className={`group p-2 md:p-3 rounded-2xl bg-white border border-black/10 shadow-xl cursor-pointer ${
+        className={`group p-2 md:p-3 rounded-2xl bg-white border border-black/10 shadow-xl cursor-pointer md:hover:scale-[1.03] transition-transform duration-500 ${
           isReversed ? "md:[direction:ltr]" : ""
         }`}
       >

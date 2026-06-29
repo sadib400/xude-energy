@@ -86,30 +86,28 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[clamp(2.5rem,10vw,4.5rem)] leading-[0.95] font-heading font-black tracking-tight text-white drop-shadow-lg"
+            className="text-3xl md:text-[clamp(2.5rem,8vw,4.5rem)] leading-[0.95] font-heading font-black tracking-tight text-white drop-shadow-lg"
           >
-            The Energy Drink
-            <br />
-            You&apos;ll Finally Say
-            <br />
-            <span className="text-gradient-hook">Yes To.</span>
+            <span className="block whitespace-nowrap">The Energy Drink</span>
+            <span className="block whitespace-nowrap">You&apos;ll Finally Say</span>
+            <span className="block whitespace-nowrap text-gradient-hook">Yes To.</span>
           </motion.h1>
 
           {/* Buttons + Slide Indicators */}
           <div className="flex flex-col gap-6 md:items-end">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="w-full md:w-auto md:min-w-[180px]"
-            >
-              <button
-                onClick={() => scrollTo("shop-section")}
-                className="w-full group flex items-center justify-center px-6 py-2.5 md:py-3 bg-white text-black font-bold text-base md:text-lg tracking-wide hover:bg-white/90 hover:scale-[1.02] transition-all"
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="w-full max-w-[280px] md:w-auto md:min-w-[180px]"
               >
-                Buy Now
-              </button>
-            </motion.div>
+                <button
+                  onClick={() => scrollTo("shop-section")}
+                  className="w-full group flex items-center justify-center px-6 py-2.5 md:py-3 bg-white text-black font-bold text-base md:text-lg tracking-wide hover:bg-white/90 md:hover:scale-[1.02] transition-all"
+                >
+                  Buy Now
+                </button>
+              </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}

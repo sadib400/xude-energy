@@ -50,7 +50,7 @@ function CanVisual({ gradient }: { gradient: string[] }) {
 }
 
 export function CartDrawer() {
-  const { items, total, count, isOpen, setIsOpen, updateQty } = useCart();
+  const { items, total, count, isOpen, setIsOpen, updateQty, removeItem } = useCart();
 
   return (
     <AnimatePresence>
@@ -86,15 +86,22 @@ export function CartDrawer() {
                 items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex gap-4 p-4 border border-black/10 bg-white hover:border-foreground/30 transition-colors"
+                    className="relative flex gap-4 p-4 border border-black/10 bg-white hover:border-foreground/30 transition-colors"
                   >
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      className="absolute top-2 right-2 p-1.5 text-muted hover:text-foreground hover:bg-black/5 transition-colors rounded-full"
+                      aria-label={`Remove ${item.name}`}
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
                     <div
                       className="w-16 h-20 shrink-0"
                       style={{ backgroundColor: item.color }}
                     >
                       <CanVisual gradient={item.gradient} />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 pr-6">
                       <h4 className="font-bold">{item.name}</h4>
                       <p className="text-sm text-muted">{item.subtitle}</p>
                       <div className="flex items-center gap-3 mt-3">
@@ -113,7 +120,7 @@ export function CartDrawer() {
                         </button>
                       </div>
                     </div>
-                    <div className="font-bold">
+                    <div className="font-bold self-end">
                       ${(item.price * item.qty).toFixed(2)}
                     </div>
                   </div>
@@ -127,7 +134,7 @@ export function CartDrawer() {
                   <span className="text-muted font-medium">Total</span>
                   <span className="text-3xl font-heading font-black">${total.toFixed(2)}</span>
                 </div>
-                <button className="w-full py-4 bg-foreground text-background font-bold tracking-wide hover:bg-foreground/85 hover:scale-[1.01] transition-all">
+                <button className="w-full py-4 bg-foreground text-background font-bold tracking-wide hover:bg-foreground/85 md:hover:scale-[1.01] transition-all">
                   Checkout
                 </button>
               </div>

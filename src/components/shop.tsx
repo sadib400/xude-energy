@@ -76,7 +76,7 @@ function CanVisual({ gradient }: { gradient: string[] }) {
 }
 
 function ProductCard({ product, idx, isDesktop }: { product: (typeof products)[0]; idx: number; isDesktop?: boolean }) {
-  const { addItem, items } = useCart();
+  const { addItem, updateQty, items } = useCart();
   const isLightHover = product.hoverText === "light";
   const qty = items.find((i) => i.id === product.id)?.qty || 0;
 
@@ -100,20 +100,29 @@ function ProductCard({ product, idx, isDesktop }: { product: (typeof products)[0
       className="group"
     >
       <motion.div
-        whileHover={{ backgroundColor: product.color, y: isDesktop ? -6 : 0 }}
-        whileTap={{ scale: 0.98 }}
+        whileTap={isDesktop ? { scale: 0.98 } : undefined}
         transition={{ duration: 0.35 }}
-        className="relative h-[420px] md:h-[520px] bg-white border border-black/10 p-5 md:p-8 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+        style={{ "--product-color": product.color } as React.CSSProperties}
+        className={`relative h-[420px] md:h-[520px] bg-white border border-black/10 p-5 md:p-8 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl md:hover:bg-[var(--product-color)] md:hover:-translate-y-1.5 transition-all duration-500 ${
+          isDesktop ? "" : ""
+        }`}
       >
         {/* Image container - takes remaining height */}
         <div className="flex-1 min-h-0 relative flex items-center justify-center">
-          <motion.div
-            className="w-24 h-48 md:w-40 md:h-80"
-            whileHover={{ scale: 1.08, rotate: 3 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <CanVisual gradient={product.gradient} />
-          </motion.div>
+          {isDesktop ? (
+            <motion.div
+              className="w-24 h-48 md:w-40 md:h-80"
+              whileHover={{ scale: 1.08, rotate: 3 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <CanVisual gradient={product.gradient} />
+            </motion.div>
+          ) : (
+            <div
+              className="w-full h-full max-h-[220px] aspect-[3/4]"
+              style={{ backgroundColor: product.color }}
+            />
+          )}
         </div>
 
         {/* Product info */}
@@ -133,13 +142,6 @@ function ProductCard({ product, idx, isDesktop }: { product: (typeof products)[0
             {product.name}
           </h3>
           <p
-            className={`text-sm md:text-base font-semibold text-muted mb-2 transition-colors duration-500 ${
-              isLightHover ? "group-hover:text-white/70" : "group-hover:text-black/60"
-            }`}
-          >
-            {product.tagline}
-          </p>
-          <p
             className={`text-xs md:text-sm text-muted leading-relaxed transition-colors duration-500 ${
               isLightHover ? "group-hover:text-white/70" : "group-hover:text-black/60"
             }`}
@@ -148,7 +150,7 @@ function ProductCard({ product, idx, isDesktop }: { product: (typeof products)[0
           </p>
         </div>
 
-        {/* Bottom: price + Add to Cart */}
+        {/* Bottom: price + Add to Cart / stepper */}
         <div className="mt-auto pt-4 md:pt-6">
           <p
             className={`text-base md:text-lg font-bold mb-3 transition-colors duration-500 ${
@@ -157,20 +159,34 @@ function ProductCard({ product, idx, isDesktop }: { product: (typeof products)[0
           >
             ${product.price.toFixed(2)}
           </p>
-          <button
-            onClick={handleAddToCart}
-            className="w-full py-3 md:py-4 text-sm font-bold tracking-wide flex items-center justify-center gap-2 border-2 border-foreground bg-white text-foreground transition-all duration-500 hover:scale-[1.02] group-hover:bg-foreground group-hover:text-background group-hover:border-foreground"
-          >
-            {qty > 0 ? (
-              <>
-                Added ({qty}) <Plus className="w-4 h-4" />
-              </>
-            ) : (
-              <>
-                Add to Cart <Plus className="w-4 h-4" />
-              </>
-            )}
-          </button>
+          {qty > 0 ? (
+            <div className="w-full flex items-stretch border-2 border-foreground bg-white text-foreground text-sm font-bold tracking-wide overflow-hidden">
+              <button
+                onClick={() => updateQty(product.id, -1)}
+                className="flex-1 py-3 md:py-4 hover:bg-black/5 active:bg-black/10 transition-colors"
+                aria-label="Decrease quantity"
+              >
+                -
+              </button>
+              <span className="flex-1 flex items-center justify-center py-3 md:py-4 border-x-2 border-foreground">
+                {qty}
+              </span>
+              <button
+                onClick={() => updateQty(product.id, 1)}
+                className="flex-1 py-3 md:py-4 hover:bg-black/5 active:bg-black/10 transition-colors"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+          ) : (
+              <button
+                onClick={handleAddToCart}
+                className="w-full py-3 md:py-4 text-sm font-bold tracking-wide flex items-center justify-center gap-2 border-2 border-foreground bg-white text-foreground transition-all duration-500 md:hover:scale-[1.02] group-hover:bg-foreground group-hover:text-background group-hover:border-foreground"
+              >
+              Add to Cart <Plus className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </motion.div>
     </motion.div>
@@ -180,7 +196,7 @@ function ProductCard({ product, idx, isDesktop }: { product: (typeof products)[0
 function MobileScrollRow({ children }: { children: React.ReactNode }) {
   return (
     <div className="md:hidden -mx-4 px-4">
-      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 scrollbar-hide">
+      <div className="flex gap-4 snap-scroll pb-6">
         {children}
       </div>
     </div>
@@ -258,9 +274,8 @@ export function ShopSection() {
             className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4"
           >
             <motion.div
-              whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className="group bg-foreground text-background p-6 md:p-10 flex flex-col justify-between min-h-[200px] shadow-sm hover:shadow-2xl transition-shadow duration-500 cursor-pointer"
+              className="group bg-foreground text-background p-6 md:p-10 flex flex-col justify-between min-h-[200px] shadow-sm hover:shadow-2xl md:hover:-translate-y-1.5 transition-all duration-500 cursor-pointer"
             >
               <div>
                 <h3 className="text-2xl md:text-3xl font-heading font-black tracking-tight mb-2">
@@ -275,9 +290,8 @@ export function ShopSection() {
               </button>
             </motion.div>
             <motion.div
-              whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className="group bg-white border border-black/10 p-6 md:p-10 flex flex-col justify-between min-h-[200px] shadow-sm hover:shadow-2xl hover:border-foreground/30 transition-all duration-500 cursor-pointer"
+              className="group bg-white border border-black/10 p-6 md:p-10 flex flex-col justify-between min-h-[200px] shadow-sm hover:shadow-2xl hover:border-foreground/30 md:hover:-translate-y-1.5 transition-all duration-500 cursor-pointer"
             >
               <div>
                 <h3 className="text-2xl md:text-3xl font-heading font-black tracking-tight mb-2">

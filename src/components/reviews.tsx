@@ -50,7 +50,7 @@ function ReviewCard({ review, index }: { review: (typeof reviews)[0]; index: num
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="group bg-white border border-black/10 p-5 md:p-6 hover:border-foreground/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+      className="group bg-white border border-black/10 p-5 md:p-6 md:hover:border-foreground/30 md:hover:-translate-y-1 md:hover:shadow-lg transition-all duration-300"
     >
       <div className="flex gap-1 mb-4">
         {[...Array(5)].map((_, i) => (

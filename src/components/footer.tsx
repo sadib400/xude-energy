@@ -84,7 +84,7 @@ export function Footer() {
                 <a
                   key={social.name}
                   href="#"
-                  className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground hover:scale-110 transition-all"
+                  className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center md:hover:bg-background md:hover:text-foreground md:hover:scale-110 transition-all"
                   aria-label={social.name}
                 >
                   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
