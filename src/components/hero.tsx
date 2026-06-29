@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { getLenis } from "@/lib/lenis";
 
 const heroSlides = [
@@ -45,7 +44,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero-section" className="relative min-h-[100svh] w-full overflow-hidden bg-black">
+    <section id="hero-section" className="relative min-h-[100svh] w-full overflow-hidden bg-black md:snap-start">
       {/* Background Images with Parallax + Slide Transition */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <AnimatePresence initial={false} mode="sync">
@@ -102,20 +101,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-2 gap-3 w-full md:w-auto md:min-w-[360px]"
+              className="w-full md:w-auto md:min-w-[180px]"
             >
               <button
                 onClick={() => scrollTo("shop-section")}
-                className="group flex items-center justify-center gap-2 px-6 py-3 md:py-4 bg-white text-black font-bold text-base md:text-lg tracking-wide hover:bg-white/90 hover:scale-[1.02] transition-all"
+                className="w-full group flex items-center justify-center px-6 py-2.5 md:py-3 bg-white text-black font-bold text-base md:text-lg tracking-wide hover:bg-white/90 hover:scale-[1.02] transition-all"
               >
                 Buy Now
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-              <button
-                onClick={() => scrollTo("flavours-section")}
-                className="group flex items-center justify-center gap-2 px-6 py-3 md:py-4 border-2 border-white text-white font-bold text-base md:text-lg tracking-wide hover:bg-white hover:text-black hover:scale-[1.02] transition-all"
-              >
-                Explore Flavours
               </button>
             </motion.div>
 

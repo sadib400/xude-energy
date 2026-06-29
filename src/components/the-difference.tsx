@@ -120,7 +120,7 @@ function StoryBlock({
 
 export function TheDifference() {
   return (
-    <section id="difference-section" className="relative w-full bg-background px-4 sm:px-6 lg:px-10">
+    <section id="difference-section" className="relative w-full bg-background px-4 sm:px-6 lg:px-10 md:snap-start">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="pt-16 md:pt-20 pb-8 md:pb-10">

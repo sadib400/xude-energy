@@ -78,6 +78,14 @@ html {
   scroll-snap-align: center;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Utility to clip sharp edges */
 .sharp {
   border-radius: 0;

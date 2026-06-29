@@ -10,8 +10,8 @@ import { useCart } from "@/components/cart-provider";
 const navItems = [
   { name: "Story", id: "difference-section" },
   { name: "Ingredients", id: "inside-section" },
-  { name: "Flavours", id: "flavours-section" },
   { name: "Reviews", id: "reviews-section" },
+  { name: "Shop", id: "shop-section" },
 ];
 
 function CartButton({ isSticky }: { isSticky: boolean }) {
@@ -144,7 +144,7 @@ export function Navigation() {
           >
             <div className="flex flex-col justify-center h-full px-6 pb-20">
               <nav className="flex flex-col gap-2">
-                {[{ name: "Home", id: "hero-section" }, ...navItems, { name: "Shop", id: "shop-section" }].map(
+                {[{ name: "Home", id: "hero-section" }, ...navItems].map(
                   (item, i) => (
                     <motion.button
                       key={item.name}

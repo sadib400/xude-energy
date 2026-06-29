@@ -75,7 +75,7 @@ function ReviewCard({ review, index }: { review: (typeof reviews)[0]; index: num
 
 export function ReviewsSection() {
   return (
-    <section id="reviews-section" className="relative w-full bg-background py-24 md:py-32 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <section id="reviews-section" className="relative w-full bg-background py-24 md:py-32 px-4 sm:px-6 lg:px-10 overflow-hidden md:snap-start">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end mb-10 md:mb-16">
