@@ -67,42 +67,46 @@ export function CartDrawer() {
                 items.map((item) => (
                   <div
                     key={item.id}
-                    className="relative flex gap-4 p-4 border border-black/10 bg-white hover:border-foreground/30 transition-colors"
+                    className="relative p-4 border border-black/10 bg-white hover:border-foreground/30 transition-colors overflow-hidden"
                   >
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="absolute top-2 right-2 p-1.5 text-muted hover:text-foreground hover:bg-black/5 transition-colors rounded-full"
+                      className="absolute top-2 right-2 p-1.5 text-muted hover:text-foreground hover:bg-black/5 transition-colors rounded-full z-10"
                       aria-label={`Remove ${item.name}`}
                     >
                       <X className="w-4 h-4" />
                     </button>
-                    <div
-                      className="relative w-16 h-20 shrink-0"
-                      style={{ backgroundColor: item.color }}
-                    >
-                      <CartItemImage image={item.image} color={item.color} name={item.name} />
-                    </div>
-                    <div className="flex-1 pr-6">
-                      <h4 className="font-bold">{item.name}</h4>
-                      <p className="text-sm text-muted">{item.subtitle}</p>
-                      <div className="flex items-center gap-3 mt-3">
-                        <button
-                          onClick={() => updateQty(item.id, -1)}
-                          className="p-1 hover:bg-black/5 transition-colors rounded-full"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
-                        <span className="font-bold w-6 text-center">{item.qty}</span>
-                        <button
-                          onClick={() => updateQty(item.id, 1)}
-                          className="p-1 hover:bg-black/5 transition-colors rounded-full"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
+                    <div className="flex gap-4">
+                      <div
+                        className="relative w-16 h-20 shrink-0"
+                        style={{ backgroundColor: item.color }}
+                      >
+                        <CartItemImage image={item.image} color={item.color} name={item.name} />
                       </div>
-                    </div>
-                    <div className="font-bold self-end">
-                      ${(item.price * item.qty).toFixed(2)}
+                      <div className="flex-1 min-w-0 pr-8">
+                        <h4 className="font-bold truncate">{item.name}</h4>
+                        <p className="text-sm text-muted truncate">{item.subtitle}</p>
+                        <div className="flex items-center justify-between gap-3 mt-3">
+                          <div className="flex items-center gap-3">
+                            <button
+                              onClick={() => updateQty(item.id, -1)}
+                              className="p-1 hover:bg-black/5 transition-colors rounded-full"
+                            >
+                              <Minus className="w-4 h-4" />
+                            </button>
+                            <span className="font-bold w-6 text-center">{item.qty}</span>
+                            <button
+                              onClick={() => updateQty(item.id, 1)}
+                              className="p-1 hover:bg-black/5 transition-colors rounded-full"
+                            >
+                              <Plus className="w-4 h-4" />
+                            </button>
+                          </div>
+                          <div className="font-bold whitespace-nowrap">
+                            ${(item.price * item.qty).toFixed(2)}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))

@@ -18,7 +18,7 @@ export const ASSETS = {
         alt: "Built for every energy",
       },
       {
-        mobile: "/assets/img4.png.png",
+        mobile: "/assets/img4.png",
         desktop: "/assets/img4.png",
         alt: "Adventure with Xude",
       },
