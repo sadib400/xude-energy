@@ -108,7 +108,7 @@ function OpportunityCard({ opportunity, index }: { opportunity: (typeof opportun
 
 export function JoinUsSection() {
   return (
-    <section id="join-section" className="relative w-full bg-[#fafafa] pt-0 md:pt-4 pb-16 md:pb-24 px-4 sm:px-6 lg:px-10 md:snap-start">
+    <section id="join-section" className="relative w-full bg-background pt-0 md:pt-4 pb-16 md:pb-24 px-4 sm:px-6 lg:px-10 md:snap-start">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
