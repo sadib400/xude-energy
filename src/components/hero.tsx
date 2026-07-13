@@ -64,8 +64,6 @@ export function Hero() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Subtle dark overlay for text legibility */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/50 via-black/20 to-black/30 pointer-events-none" />
 
       {/* Content */}
       <motion.div
