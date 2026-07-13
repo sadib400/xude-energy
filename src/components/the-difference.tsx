@@ -82,7 +82,7 @@ export function TheDifference() {
         <div className="sticky top-[10vh] h-[90vh] w-full flex items-center justify-center overflow-x-clip px-4 sm:px-6 lg:px-10">
           {/* 2. THE PINNED VIEW: This locks to the screen while the user scrolls down the 300vh track. */}
 
-          <div className="relative w-full max-w-5xl h-[70dvh] max-h-[600px] md:h-[600px]">
+          <div className="relative w-full max-w-5xl h-[70dvh] max-h-[600px] md:h-[600px] transition-all duration-500 ease-out">
             {/* 3. THE STAGE: Cards go here. */}
 
             {/* Card 3 (Bottom Layer) - Doesn't move */}
