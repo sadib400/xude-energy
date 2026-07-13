@@ -28,6 +28,7 @@ export interface MappedProduct {
   id: string;
   handle: string;
   name: string;
+  description: string;
   price: number;
   color: string;
   hoverText: string;
