@@ -22,7 +22,7 @@ const opportunities = [
   },
   {
     id: "partner",
-    title: "Become business partner",
+    title: "Become a business partner",
     video: ASSETS.joinUs.partnerVideo,
     buttonLabel: "Join us",
     buttonLink: "https://forms.gle/2osDUD8sVfYYQHh68",
@@ -98,7 +98,7 @@ function OpportunityCard({ opportunity, index }: { opportunity: (typeof opportun
       </div>
 
       {/* Join us button */}
-      <a 
+      <a
         href={opportunity.buttonLink}
         target="_blank"
         rel="noopener noreferrer"
