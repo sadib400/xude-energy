@@ -3,7 +3,7 @@
 
 export const ASSETS = {
   logo: "/assets/Xude_Final_Logo.svg",
-  footerLogo: "/assets/Xudebrand.png",
+  footerLogo: "/assets/media__1781978310756.png",
 
   hero: {
     slides: [
