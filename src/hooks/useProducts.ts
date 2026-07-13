@@ -2,16 +2,14 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../services/product.service';
 import { ShopifyProduct } from '../types/shopify';
 // Local UI mappings for styling products based on their handle
-const PRODUCT_UI_MAPPING: Record<string, { subtitle: string; color: string; hoverText: string; gradient: string[]; image?: string }> = {
+const PRODUCT_UI_MAPPING: Record<string, { color: string; hoverText: string; gradient: string[]; image?: string }> = {
   "lemon-mint": {
-    subtitle: "12-Pack",
     color: "#D4F46C",
     hoverText: "dark",
     gradient: ["#D4F46C", "#a8d648"],
     image: "/assets/Xude_coverscrenn.png", // Fallback local image if needed
   },
   "mango-passion": {
-    subtitle: "12-Pack",
     color: "#F97316",
     hoverText: "dark",
     gradient: ["#F97316", "#EA580C"],
@@ -30,10 +28,7 @@ export interface MappedProduct {
   id: string;
   handle: string;
   name: string;
-  tagline: string;
-  description: string;
   price: number;
-  subtitle: string;
   color: string;
   hoverText: string;
   gradient: string[];
@@ -61,8 +56,7 @@ export function useProducts() {
         
         const defaultVariant = p.variants.edges[0]?.node;
         const price = defaultVariant ? parseFloat(defaultVariant.price.amount) : 0;
-        const uiStyle = PRODUCT_UI_MAPPING[p.handle] || {
-          subtitle: "Single",
+        const uiStyle = PRODUCT_UI_MAPPING[p.handle] || (p.handle.includes("mango") ? PRODUCT_UI_MAPPING["mango-passion"] : null) || {
           color: "#DDDDDD",
           hoverText: "dark",
           gradient: ["#DDDDDD", "#BBBBBB"],
@@ -73,13 +67,8 @@ export function useProducts() {
           id: p.id,
           handle: p.handle,
           name: p.title,
-          // We can parse tagline from description if separated by newlines, or keep a static mapping.
-          // Fallback tagline mapping:
-          tagline: p.handle === "lemon-mint" ? "Crisp. Refreshing. Sharp." : 
-                   p.handle === "mango-passion" ? "Tropical. Smooth. Vibrant." : "",
           description: p.description,
           price,
-          subtitle: uiStyle.subtitle,
           color: uiStyle.color,
           hoverText: uiStyle.hoverText,
           gradient: uiStyle.gradient,

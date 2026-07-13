@@ -37,17 +37,16 @@ const getUIForHandle = (handle: string) => {
   // Same fallback logic as useProducts
   const mapping: Record<string, any> = {
     "lemon-mint": {
-      subtitle: "12-Pack",
       color: "#D4F46C",
       gradient: ["#D4F46C", "#a8d648"],
     },
     "mango-passion": {
-      subtitle: "12-Pack",
       color: "#F97316",
       gradient: ["#F97316", "#EA580C"],
     },
   };
-  return mapping[handle] || { subtitle: "", color: "#DDDDDD", gradient: ["#DDDDDD", "#BBBBBB"] };
+  if (handle.includes("mango")) return mapping["mango-passion"];
+  return mapping[handle] || { color: "#DDDDDD", gradient: ["#DDDDDD", "#BBBBBB"] };
 };
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -62,7 +61,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         id: node.id,
         variantId: node.merchandise.id,
         name: node.merchandise.product.title,
-        subtitle: uiStyle.subtitle,
+        subtitle: node.merchandise.title === "Default Title" ? "" : node.merchandise.title,
         price: parseFloat(node.merchandise.price.amount),
         color: uiStyle.color,
         gradient: uiStyle.gradient,

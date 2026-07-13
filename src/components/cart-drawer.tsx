@@ -92,7 +92,7 @@ export function CartDrawer() {
                     </button>
                     <div className="flex gap-4">
                       <div
-                        className="relative w-16 h-20 shrink-0"
+                        className="relative w-20 aspect-square shrink-0"
                         style={{ backgroundColor: item.color }}
                       >
                         <CartItemImage image={item.image} color={item.color} name={item.name} />
