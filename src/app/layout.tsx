@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     description: "Finally, an energy drink for everyone.",
     images: ["/assets/Xudebrand.png"],
   },
+  verification: {
+    google: "MfdYc1oHHmnZLDj6zrbAUmzRQ-2e4yU56oKRr3Bfryk",
+  },
 };
 
 export default function RootLayout({
