@@ -43,6 +43,7 @@ body {
   height: 0px;
   background: transparent;
 }
+
 html {
   scrollbar-width: none;
 }
@@ -52,13 +53,16 @@ html {
   width: 6px;
   display: block;
 }
+
 .cart-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .cart-scroll::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+
 .cart-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
@@ -73,12 +77,15 @@ html {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
+
 .snap-scroll::-webkit-scrollbar {
   display: none;
 }
+
 .snap-start {
   scroll-snap-align: start;
 }
+
 .snap-center {
   scroll-snap-align: center;
 }
@@ -87,6 +94,7 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -107,10 +115,12 @@ html {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
 }
+
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }
@@ -121,6 +131,7 @@ html {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -129,19 +140,22 @@ html {
 
 /* Animated gradient text for hero hook */
 @keyframes gradient-shift {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
 }
+
 .text-gradient-hook {
-  background: linear-gradient(90deg, #D4F46C, #00E676, #D4F46C, #FFB800, #D4F46C);
+  background: linear-gradient(90deg, #b7f46c, #00e673, #f4f06c, #ffe14d, #d7f46c);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 5s ease-in-out infinite;
 }
-

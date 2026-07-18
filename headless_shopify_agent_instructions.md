@@ -64,7 +64,7 @@ const nextConfig = {
 *   **Metadata:** Use Next.js `metadata` in `layout.tsx` for global SEO (Title, Description, OpenGraph, Site Verification). Hardcoding global metadata is preferred for performance over querying Shopify's shop object. Use dynamic `generateMetadata` only for the `/products/[handle]` routes.
 *   **Traffic & Analytics:** Because this is a Headless store, Shopify's native visitor tracking will NOT work on the frontend. Do not attempt to route frontend traffic data back to Shopify. Instead:
     *   Implement **Vercel Web Analytics** for simple, out-of-the-box traffic tracking.
-    *   Implement **Google Analytics 4 (GA4)** via Google Tag Manager for detailed e-commerce tracking (Add to Cart, Page Views). Shopify will automatically take over tracking once the user reaches the checkout URL.
+    *   Implement **Google Analytics 4 (GA4)** via Google Tag Manager for detailed e-commerce tracking (Add to Cart, Page Views). Shopify will automatically take over tracking once the user reaches the checkout URL. ask user if they want to implement these tracking systems or not.
 
 ## 6. GraphQL Fetch Utility
 Use a standard, reusable fetch utility for all Shopify calls to handle caching and errors gracefully:
@@ -88,8 +88,3 @@ export async function shopifyFetch<T>({ query, variables }: { query: string; var
   };
 }
 ```
-
-## 7. Common Gotchas & UI Bug Fixes
-Based on past projects, be aware of the following UI bugs that frequently occur in Headless Shopify builds:
-*   **Transparent Header on White Pages:** If the global `<Navigation />` header is transparent (designed to sit over a dark hero image on the landing page), its text/icons will become invisible on plain white pages like `/policies/[handle]`. **Fix:** Pass a prop (e.g., `theme="dark"`) to the `<Navigation />` component or dynamically check the `pathname` to apply a solid background and dark text on non-homepage routes.
-*   **Cart Drawer Z-Index & Pointer Events:** If the `<CartDrawer />` fails to open or click on certain pages (like the policy page), it is usually caused by overlaying elements (like custom cursor wrappers or absolutely positioned containers) blocking `pointer-events`. **Fix:** Ensure the Cart Drawer has the highest `z-index` (e.g., `z-50`), completely remove any unnecessary `pointer-events-none` wrappers, and verify it is mounted at the very top level of the DOM in `layout.tsx`.
