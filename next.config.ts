@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: 'https://xudedrink.myshopify.com/admin',
         permanent: true,
       },
+      {
+        source: '/pages/about-us',
+        destination: '/#difference-section',
+        permanent: true,
+      },
     ];
   },
 };

@@ -8,13 +8,13 @@ export const ASSETS = {
   hero: {
     slides: [
       {
-        mobile: "/assets/pi1.png",
-        desktop: "/assets/img1.png",
+        mobile: "/assets/pi1.webp",
+        desktop: "/assets/img1.webp",
         alt: "Mother and child analogy",
       },
       {
-        mobile: "/assets/pi2.png",
-        desktop: "/assets/img2.png",
+        mobile: "/assets/pi2.webp",
+        desktop: "/assets/img2.webp",
         alt: "Heavy weight analogy",
       },
 
@@ -24,18 +24,18 @@ export const ASSETS = {
   difference: {
     stories: [
       {
-        mobile: "/assets/pst1.png",
-        desktop: "/assets/st1.png",
+        mobile: "/assets/pst1.webp",
+        desktop: "/assets/st1.webp",
         alt: "Fruit First",
       },
       {
-        mobile: "/assets/ps2.png",
-        desktop: "/assets/s2.png",
+        mobile: "/assets/ps2.webp",
+        desktop: "/assets/s2.webp",
         alt: "Complement to energy",
       },
       {
-        mobile: "/assets/ps3.png",
-        desktop: "/assets/s3.png",
+        mobile: "/assets/ps3.webp",
+        desktop: "/assets/s3.webp",
         alt: "Purposeful Ingredients",
       },
     ],

@@ -146,8 +146,8 @@ export function TheDifference() {
             transition={{ duration: 0.8 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end"
           >
-            <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tight">
-              OUR STORY.
+            <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tight uppercase">
+              ABOUT US
             </h2>
           </motion.div>
         </div>

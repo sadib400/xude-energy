@@ -10,7 +10,7 @@ import { Logo } from "@/components/logo";
 import { useCart } from "@/context/CartProvider";
 
 const navItems = [
-  { name: "Story", id: "difference-section" },
+  { name: "About Us", id: "difference-section" },
   { name: "Ingredients", id: "inside-section" },
   { name: "Shop", id: "shop-section" },
 ];
@@ -109,7 +109,7 @@ export function Navigation({ alwaysSticky = false }: { alwaysSticky?: boolean } 
 
             {/* Desktop Nav */}
             <div
-              className={`hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-500 md:relative md:-left-[50px] ${isSticky
+              className={`hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-500 md:relative md:-left-[25px] ${isSticky
                 ? "bg-transparent"
                 : "bg-white/10 backdrop-blur-md border border-white/20"
                 }`}

@@ -21,7 +21,8 @@ const socialIcons = [
 
 const footerLinks = {
   explore: [
-    { name: "Story", href: "#difference-section" },
+    { name: "Home", href: "#hero-section" },
+    { name: "About Us", href: "#difference-section" },
     { name: "Ingredients", href: "#inside-section" },
     { name: "Shop", href: "#shop-section" },
   ],
